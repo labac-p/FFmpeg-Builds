@@ -32,7 +32,7 @@ done
 
 for TAG in ${TAGS[@]}; do
     echo "Deleting ${TAG}"
-    gh release delete --cleanup-tag --yes "${TAG}"
+    gh release delete --cleanup-tag --yes "${TAG}" || true
 done
 
 git push --tags --prune
