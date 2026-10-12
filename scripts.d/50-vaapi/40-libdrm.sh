@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SCRIPT_REPO="https://gitlab.freedesktop.org/mesa/drm.git"
-SCRIPT_COMMIT="35c7c536d5d1c0124a416a531df4432508d7d2f1"
+SCRIPT_COMMIT="b97cbde15c5c3abfe44d78e8f57139e50f612fec"
 
 ffbuild_enabled() {
     [[ $TARGET != linux* ]] && return -1
@@ -18,7 +18,6 @@ ffbuild_dockerbuild() {
         -Dcairo-tests=disabled
         -Dvalgrind=disabled
         -Dexynos=disabled
-        -Dfreedreno=disabled
         -Domap=disabled
         -Detnaviv=disabled
         -Dintel=enabled

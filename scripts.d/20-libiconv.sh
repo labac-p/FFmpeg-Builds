@@ -2,11 +2,11 @@
 
 SCRIPT_REPO="https://git.savannah.gnu.org/git/libiconv.git"
 SCRIPT_MIRROR="git://git.git.savannah.gnu.org/libiconv.git"
-SCRIPT_COMMIT="9d19c66d0a1768cffcf497b2db70bf4018b578d7"
+SCRIPT_COMMIT="1df3087ba8110c7f3ed3eb5f8869b814dbbe00b0"
 
 SCRIPT_REPO2="https://git.savannah.gnu.org/git/gnulib.git"
 SCRIPT_MIRROR2="https://github.com/coreutils/gnulib.git"
-SCRIPT_COMMIT2="103c922f47f8b0fb0503024783bdaff5016eea82"
+SCRIPT_COMMIT2="eb72eb6f75f5621c5d648acd11467fd124584617"
 
 ffbuild_enabled() {
     return 0

@@ -1,12 +1,17 @@
 #!/bin/bash
 
 SCRIPT_REPO="https://github.com/dyne/frei0r.git"
-SCRIPT_COMMIT="253addfd4bea3c90b0bf765589ca28ea18f3ddc0"
+SCRIPT_COMMIT="4c95b2a02b2d03c71d5f6d7980d16c99acfd5a5f"
 
 ffbuild_enabled() {
     [[ $VARIANT == lgpl* ]] && return -1
     (( $(ffbuild_ffver) >= 500 )) || return -1
     return 0
+}
+
+ffbuild_depends() {
+    echo base
+    echo x11
 }
 
 ffbuild_dockerfinal() {
@@ -18,6 +23,10 @@ ffbuild_dockerbuild() {
     echo > test/CMakeLists.txt
 
     mkdir build && cd build
+
+    export CFLAGS="$RAW_CFLAGS"
+    export CXXFLAGS="$RAW_CXXFLAGS"
+    export LDFLAGS="$RAW_LDFLAGS"
 
     cmake -G Ninja -DCMAKE_TOOLCHAIN_FILE="$FFBUILD_CMAKE_TOOLCHAIN" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$FFBUILD_PREFIX" \
         -DWITHOUT_OPENCV=ON -DWITHOUT_FACERECOGNITION=ON -DWITHOUT_CAIRO=ON -DWITHOUT_GAVL=ON ..

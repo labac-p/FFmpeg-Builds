@@ -1,7 +1,13 @@
 #!/bin/bash
 
 SCRIPT_REPO="https://github.com/libjxl/libjxl.git"
-SCRIPT_COMMIT="f0a1c5ff9dbba51ffa932433ffb80e5e6b6e22a7"
+SCRIPT_COMMIT="b87738951c1254cd8cccaa6d47712ba735da56d8"
+
+ffbuild_depends() {
+    echo base
+    echo brotli
+    echo lcms2
+}
 
 ffbuild_enabled() {
     (( $(ffbuild_ffver) > 600 )) || return -1

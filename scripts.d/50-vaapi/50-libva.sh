@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SCRIPT_REPO="https://github.com/intel/libva.git"
-SCRIPT_COMMIT="28388a091187e2ba9e99cb750ec7426f91f73cbb"
+SCRIPT_COMMIT="6b07f7100512817f736967e899b8c26313c20623"
 
 ffbuild_depends() {
     echo base
@@ -13,7 +13,6 @@ ffbuild_enabled() {
     [[ $ADDINS_STR == *5.0* && $TARGET == win* ]] && return -1
     [[ $ADDINS_STR == *5.1* && $TARGET == win* ]] && return -1
     [[ $ADDINS_STR == *6.0* && $TARGET == win* ]] && return -1
-    [[ $TARGET == linuxarm64 ]] && return -1
     return 0
 }
 
@@ -41,6 +40,17 @@ ffbuild_dockerbuild() {
             --default-library=shared
             --sysconfdir="/etc"
             -Ddriverdir="/usr/lib/x86_64-linux-gnu/dri"
+            -Ddisable_drm=false
+            -Dwith_x11=yes
+            -Dwith_glx=no
+            -Dwith_wayland=no
+        )
+    elif [[ $TARGET == linuxarm64 ]]; then
+        myconf+=(
+            --cross-file=/cross.meson
+            --default-library=shared
+            --sysconfdir="/etc"
+            -Ddriverdir="/usr/lib/aarch64-linux-gnu/dri"
             -Ddisable_drm=false
             -Dwith_x11=yes
             -Dwith_glx=no

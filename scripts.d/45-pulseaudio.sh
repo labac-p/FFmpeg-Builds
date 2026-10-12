@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SCRIPT_REPO="https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git"
-SCRIPT_COMMIT="b096704c0d42c5e784deb781a07b23cfb5286a82"
+SCRIPT_COMMIT="77d25a1e613095bdf87a1d13b65e7c330565077a"
 
 ffbuild_depends() {
     echo base
